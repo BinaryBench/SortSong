@@ -1,20 +1,16 @@
+import sys
 from cx_Freeze import setup, Executable
 
-exe = Executable(
-     script="SortSong.py",
-     base="Win32Gui",
-     icon="Icon.ico"
-     )
-includefiles = []
+base = None
+if sys.platform == "win32":
+    base = "Win32GUI"
+
 includes = []
-excludes = []
-packages = ["os", "re", "shutil", "sys", "getopt", "mutagen.easyid3"]
 
 setup(
-     version="0.0",
-     description="No Description",
-     author="Name",
-     name="App name",
-     options={'build_exe': {'excludes':excludes,'packages':packages,'include_files':includefiles}},
-     executables=[exe]
-     )
+      name="Moo",
+      version="0.1",
+      description="Mooing Many Moos",
+      options={"build_exe": {"includes": includes}},
+      executables=[Executable("SortSong.py", base=base)]
+      )

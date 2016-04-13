@@ -17,16 +17,16 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "hs:t:", ["source=", "target="])
     except getopt.GetoptError:
-        print(os.path.basename(__file__), ' --source-dir <src directory> --target-dir <target directory>')
+        print(' --source- <src directory> --target <target directory>')
         sys.exit(2)
 
     for opt, arg in opts:
         if opt == '-h':
-            print(os.path.basename(__file__), ' --source-dir <src directory> --target-dir <target directory>')
+            print(' --source <src directory> --target <target directory>')
             sys.exit()
-        elif opt in ("-s", "--source-dir", "--src-dir"):
+        elif opt in ("-s", "--source"):
             source_dir = os.path.realpath(arg)
-        elif opt in ("-t", "--target-dir"):
+        elif opt in ("-t", "--target"):
             target_dir = os.path.realpath(arg)
 
     if not os.path.exists(target_dir):
